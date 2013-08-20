@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe NiceReplyClient do
-  let(:user_name) { "user@something.com" }
   let(:api_key) { "abc123" }
 
   let :nice_reply_client do
@@ -10,21 +9,25 @@ describe NiceReplyClient do
     )
   end
 
-  context "forming a url" do
-    it "adds the core url" do
-      nice_reply_client.getUserAverage.should include("http://www.nicereply.com/api/")
+  context "calling the API" do
+    let(:url) { "http://www.nicereply.com/api" }
+    let(:user_id) { "1234" }
+
+    it "calls the correct api method" do
+      stub_request(:post, "http://www.nicereply.com/api/getUserAverage").
+      to_return(:status => 200, :body => "", :headers => {})
+
+      nice_reply_client.getUserAverage
+
+      a_request(
+        :post, "#{url}/getUserAverage"
+      ).
+      should have_been_made
     end
 
-    it "adds the credentials" do
-      nice_reply_client.getUserAverage.should include("apikey=#{api_key}")
-    end
+    it "includes the credentials"
 
-    it "adds the method name" do
-      nice_reply_client.getUserAverage.should include("getUserAverage")
-    end
 
-    it "adds the options" do
-      nice_reply_client.getUserAverage(userid: 1234).should include("userid=1234")
-    end
+    it "includes options"
   end
 end

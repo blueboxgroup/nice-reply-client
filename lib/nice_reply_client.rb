@@ -7,33 +7,27 @@ class NiceReplyClient
   end
 
   def method_missing(method, *args)
-    compose_url(method,args)
+    call(method)
   end
 
   private
+
+  def call(method)
+    http.request(compose_request(method))
+  end
+
+  def compose_request(method)
+    Net::HTTP::Post.new("#{core_url}#{method}")
+  end
+
+private
 
   def core_url
     "http://www.nicereply.com/api/"
   end
 
-  def credentials
-    "apikey=#{@api_key}"
-  end
-
-  def add_options(args)
-    options_string = ""
-
-    args.each do |a|
-      a.each do |k,v|
-       options_string += "&#{k}=#{v}"
-      end
-    end
-
-    options_string
-  end
-
-  def compose_url(method,args)
-    add_options(args)
-    "#{core_url}#{method}?#{credentials}#{add_options(args)}"
+  def http
+    uri = URI.parse(core_url)
+    Net::HTTP.new(uri.host,uri.port)
   end
 end
