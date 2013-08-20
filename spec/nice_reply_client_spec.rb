@@ -10,17 +10,17 @@ describe NiceReplyClient do
   end
 
   context "calling the API" do
-    let(:url) { "http://www.nicereply.com/api" }
+    let(:url) { "http://www.nicereply.com/api/" }
     let(:user_id) { "1234" }
 
     it "calls the correct api method" do
-      stub_request(:post, "http://www.nicereply.com/api/getUserAverage").
+      stub_request(:post, "#{url}getUserAverage").
       to_return(:status => 200, :body => "", :headers => {})
 
       nice_reply_client.getUserAverage
 
       a_request(
-        :post, "#{url}/getUserAverage"
+        :post, "#{url}getUserAverage"
       ).
       should have_been_made
     end
