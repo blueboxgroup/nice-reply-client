@@ -2,7 +2,6 @@ require "nice_reply_client/version"
 
 class NiceReplyClient
   def initialize(credentials={})
-    @user_name = credentials[:user_name]
     @api_key = credentials[:api_key]
   end
 
@@ -17,10 +16,10 @@ class NiceReplyClient
   end
 
   def compose_request(method)
-    Net::HTTP::Post.new("#{core_url}#{method}")
+    request = Net::HTTP::Post.new("#{core_url}#{method}")
+    request.set_form_data(apikey: @api_key)
+    request
   end
-
-private
 
   def core_url
     "http://www.nicereply.com/api/"
