@@ -1,6 +1,6 @@
 # Nice::Reply::Client
 
-TODO: Write a gem description
+This is a simple Ruby wrapper for the Nice Reply API.
 
 ## Installation
 

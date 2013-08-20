@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Nice::Reply::Client::VERSION
   spec.authors       = ["Nell Shamrell"]
   spec.email         = ["nshamrell@bluebox.net"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Simple wrapper for the Nice Reply API}
+  spec.summary       = %q{Nice Reply API Wrapper}
   spec.homepage      = ""
   spec.license       = "Apache"
 
