@@ -37,7 +37,17 @@ describe NiceReplyClient do
         should have_been_made
     end
 
+    it "includes options" do
+      stub_request(:post, "#{url}getUserAverage").
+        with(
+          body: "apikey=#{api_key}&userid=#{user_id}"
+        ).
+        to_return(:status => 200, :body => "", :headers => {})
+      nice_reply_client.getUserAverage(userid: "#{user_id}")
 
-    it "includes options"
+      a_request(:post, "#{url}getUserAverage").
+        with(body: "apikey=#{api_key}&userid=#{user_id}").
+        should have_been_made
+    end
   end
 end

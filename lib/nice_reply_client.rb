@@ -6,18 +6,18 @@ class NiceReplyClient
   end
 
   def method_missing(method, *args)
-    call(method)
+    call(method,args)
   end
 
   private
 
-  def call(method)
-    http.request(compose_request(method))
+  def call(method,args)
+    http.request(compose_request(method,args))
   end
 
-  def compose_request(method)
+  def compose_request(method,options)
     request = Net::HTTP::Post.new("#{core_url}#{method}")
-    request.set_form_data(apikey: @api_key)
+    request.set_form_data
     request
   end
 
