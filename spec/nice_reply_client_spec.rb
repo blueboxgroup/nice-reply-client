@@ -13,10 +13,15 @@ describe NiceReplyClient do
     let(:url) { "http://www.nicereply.com/api/" }
     let(:user_id) { "1234" }
 
-    it "calls the correct api method" do
-      stub_request(:post, "#{url}getUserAverage").
-      to_return(:status => 200, :body => "", :headers => {})
+    before(:each) do
+      stub_request(
+        :post,
+        "#{url}getUserAverage"
+      ).
+     to_return(:status => 200, :body => "", :headers => {})
+    end
 
+    it "calls the correct api method" do
       nice_reply_client.getUserAverage
 
       a_request(:post, "#{url}getUserAverage").
@@ -24,12 +29,6 @@ describe NiceReplyClient do
     end
 
     it "includes the credentials" do
-      stub_request(:post, "#{url}getUserAverage").
-        with(
-          body: "apikey=#{api_key}"
-        ).
-        to_return(:status => 200, :body => "", :headers => {})
-
       nice_reply_client.getUserAverage
 
       a_request(:post, "#{url}getUserAverage").
@@ -38,15 +37,10 @@ describe NiceReplyClient do
     end
 
     it "includes options" do
-      stub_request(:post, "#{url}getUserAverage").
-        with(
-          body: "apikey=#{api_key}&userid=#{user_id}"
-        ).
-        to_return(:status => 200, :body => "", :headers => {})
       nice_reply_client.getUserAverage(userid: "#{user_id}")
 
       a_request(:post, "#{url}getUserAverage").
-        with(body: "apikey=#{api_key}&userid=#{user_id}").
+        with(body: "userid=#{user_id}&apikey=#{api_key}").
         should have_been_made
     end
   end
