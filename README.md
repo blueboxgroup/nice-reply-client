@@ -1,6 +1,11 @@
-# Nice::Reply::Client
+# Nice Reply Client
 
-This is a simple Ruby wrapper for the Nice Reply API.
+This is a simple Ruby wrapper for the [Nice Reply](http://www.nicereply.com/) API.
+
+## Requirements
+
+* A [Nice Reply](http://www.nicereply.com/) Account
+* The account's API key
 
 ## Installation
 
