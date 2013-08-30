@@ -17,8 +17,14 @@ class NiceReplyClient
     http.request(compose_request(method,args[0]))
   end
 
+  def convert_case(method_name)
+    # Thanks to James Edward Gray II for the regex idea!
+    # https://twitter.com/JEG2/status/358958848649863168
+    method_name.gsub(/_([a-z])/) { |s| $1.upcase }
+  end
+
   def compose_request(method,options)
-    request = Net::HTTP::Post.new("#{core_url}#{method}")
+    request = Net::HTTP::Post.new("#{core_url}#{convert_case(method.to_s)}")
     request.set_form_data(options_with_credentials(options))
     request
   end

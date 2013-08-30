@@ -22,14 +22,14 @@ describe NiceReplyClient do
     end
 
     it "calls the correct api method" do
-      nice_reply_client.getUserAverage
+      nice_reply_client.get_user_average
 
       a_request(:post, "#{url}getUserAverage").
         should have_been_made
     end
 
     it "includes the credentials" do
-      nice_reply_client.getUserAverage
+      nice_reply_client.get_user_average
 
       a_request(:post, "#{url}getUserAverage").
         with(body: "apikey=#{api_key}").
@@ -37,7 +37,7 @@ describe NiceReplyClient do
     end
 
     it "includes options" do
-      nice_reply_client.getUserAverage(userid: "#{user_id}")
+      nice_reply_client.get_user_average(userid: "#{user_id}")
 
       a_request(:post, "#{url}getUserAverage").
         with(body: "userid=#{user_id}&apikey=#{api_key}").
