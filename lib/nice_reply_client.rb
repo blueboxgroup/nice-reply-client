@@ -1,4 +1,5 @@
 require "nice_reply_client/version"
+require "net/http"
 
 class NiceReplyClient
   def initialize(credentials={})
@@ -14,7 +15,8 @@ class NiceReplyClient
   private
 
   def call(method,args)
-    http.request(compose_request(method,args[0]))
+    response = http.request(compose_request(method,args[0]))
+    response_hash = { code: response.code, body: response.body }
   end
 
   def convert_case(method_name)

@@ -31,9 +31,11 @@ Or install it yourself as:
                       )
 </pre>
 
-You can now call any method from Nice Reply's API.  You do need to provide the method name in snake_case format.  Please see blow for examples.
+You can now call any method from Nice Reply's API.  You do need to provide the method name in snake_case format.  Please see below for examples.
 
-_For a complete list of API calls, please see Nice Reply's [API documentation](http://www.nicereply.com/API-example/doc/api-reference.html)
+After each call, the gem will return a hash including the response code and the response body from CDNetworks.
+
+For a complete list of API calls, please see Nice Reply's [API documentation](http://www.nicereply.com/API-example/doc/api-reference.html)
 
 ### Examples
 
