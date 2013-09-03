@@ -40,24 +40,55 @@ For a complete list of API calls, please see Nice Reply's [API documentation](ht
 ### Examples
 
 Getting your company's average ratings score:
-  <pre>
-    nice_reply_client.get_company_average
-    {"companyAverage": 10.0}
-  </pre>
+<pre>
+  nice_reply_client.get_company_average
+  => {:code=>"200", :body=>"{\"companyAverage\":9}"}
+</pre>
 
 Getting your company's user list
+<pre>
+  nice_reply_client.get_user_list
 
-Getting a user's average rating
+</pre>
 
-Getting a user's average from last month
+Getting an agent's average rating
+<pre>
+  nice_reply_client.get_user_average(
+    username: [Username to get average rating on]
+  )
+</pre>
+
+Getting a agent's average rating from last month
+<pre>
+  nice_reply_client.get_user_average_last_month(
+    username: [agent's username]
+  )
+</pre>
 
 Setting a rating
+<pre>
+  nice_reply_client.set_rating(
+    username: [agent's username],
+    score: 10,
+    from: [person leaving rating],
+    ticket: "A123",
+    comment: "Great service!"
+  )
+</pre>
 
 Updating a rating
+<pre>
+  nice_reply_client.update_rating(
+    id: [id # of rating to update],
+    score: 7,
+    comment: "OK service"
+  )
+</pre>
 ## Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+4. Run specs with <pre>rake</pre>
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create new Pull Request
