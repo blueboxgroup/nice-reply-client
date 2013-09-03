@@ -5,7 +5,7 @@ This is a simple Ruby wrapper for the [Nice Reply](http://www.nicereply.com/) AP
 ## Requirements
 
 * A [Nice Reply](http://www.nicereply.com/) Account
-* The account's API key
+* The account's private API key
 
 ## Installation
 
@@ -27,7 +27,7 @@ Or install it yourself as:
 
 <pre>
   nice_reply_client = NiceReplyClient.new(
-                        api_key: [Your Nice Reply API Key]
+                        api_key: [Your Nice Reply Private API Key]
                       )
 </pre>
 
