@@ -23,6 +23,11 @@ Or install it yourself as:
 
 ## Usage
 
+At the top of the class where you will be using Nice Reply Client, make sure to include this line
+<pre>
+  require 'nice_reply_client'
+</pre>
+
 ### Creating an instance of Nice Reply Client
 
 <pre>
