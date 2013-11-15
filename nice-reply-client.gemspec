@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["nshamrell@bluebox.net"]
   spec.description   = %q{Simple wrapper for the Nice Reply API}
   spec.summary       = %q{Nice Reply API Wrapper}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/blueboxgroup/nice-reply-client"
   spec.license       = "Apache"
 
   spec.files         = `git ls-files`.split($/)
