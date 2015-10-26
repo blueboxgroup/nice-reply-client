@@ -6,8 +6,6 @@ class NiceReplyClient
     @api_key = credentials[:api_key]
   end
 
-  # Thanks to the Gibbon gem https://github.com/amro/gibbon
-  # for the idea to use method_missing and a call method
   def method_missing(method, *args)
     call(method,args)
   end
@@ -20,8 +18,6 @@ class NiceReplyClient
   end
 
   def convert_case(method_name)
-    # Thanks to James Edward Gray II for the regex idea!
-    # https://twitter.com/JEG2/status/358958848649863168
     method_name.gsub(/_([a-z])/) { |s| $1.upcase }
   end
 
